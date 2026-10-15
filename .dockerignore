@@ -7,7 +7,6 @@ Dockerfile
 *.md
 ERD.png
 database/
-docker/
 .vscode
 .idea
 node_modules
