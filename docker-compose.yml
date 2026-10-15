@@ -1,0 +1,53 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: szkola_db
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: szkola_jezykowa
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/database.sql:/docker-entrypoint-initdb.d/01-database.sql:ro
+    ports:
+      - "9103:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  web:
+    build: .
+    container_name: szkola_web
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_NAME: szkola_jezykowa
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "9101:80"
+    volumes:
+      - ./:/var/www/html
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: szkola_phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "9102:80"
+
+volumes:
+  db_data:
