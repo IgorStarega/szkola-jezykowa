@@ -1,3 +1,14 @@
-</main>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <footer class="stopka">
+    <div class="stopka-wnetrze">
+        <p>© 2026 Szkoła Językowa. Panel Administratora.</p>
+    </div>
+</footer>
 </body>
 </html>
