@@ -18,6 +18,9 @@ if (!isset($_SESSION['user_id'])) {
         <p>Twoja rola w systemie: <strong><?php echo htmlspecialchars($_SESSION['role'], ENT_QUOTES, 'UTF-8'); ?></strong></p>
 
         <nav aria-label="Profil użytkownika">
+            <?php if ($_SESSION['role'] === 'admin'): ?>
+                <a href="admin/index.php">Panel administratora</a>
+            <?php endif; ?>
             <a href="edit_profile.php">Edytuj profil</a>
             <a href="index.php">Strona główna</a>
             <a href="logout.php">Wyloguj się</a>
