@@ -29,7 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['surname'] = $user['surname'];
                     $_SESSION['role'] = $user['role'];
 
-                    header("Location: profile.php");
+                    if ($user['role'] === 'admin') {
+                        header("Location: admin/index.php");
+                    } else {
+                        header("Location: profile.php");
+                    }
                     exit;
                 }
             } else {

@@ -37,7 +37,14 @@ Baza danych posiada nałożone klucze obce (FOREIGN KEY) oraz ograniczenia unika
 ## Status projektu
 
 * **Etap 1:** Konfiguracja repozytorium Git, struktura folderów, projekt i plik bazy danych, dokumentacja `README.md`.
-* **Kolejne etapy:** Obsługa rejestracji/logowania w PHP, panele użytkowników, integracja kalendarza rezerwacji i obsługa zmian statusów.
+* **Etap 2:** Moduł użytkowników, rejestracja z walidacją, logowanie z weryfikacją haseł (`password_verify`), obsługa sesji, podział na role (`client`, `employee`, `admin`), zabezpieczenie podstron przed nieuprawnionym dostępem po stronie PHP oraz edycja profilu użytkownika.
+* **Kolejne etapy:** Panel administracyjny (zarządzanie ofertą i pracownikami), integracja kalendarza rezerwacji dla klientów, wykrywanie konfliktów terminów oraz obsługa zmian statusów zajęć.
+
+## Wdrożenie i Hosting (Docker)
+
+Projekt posiada przygotowaną konfigurację środowiskową z użyciem **Dockera** (wsparcie przy konfiguracji: IgorStarega wilson ), co ulatwia hosting strony
+
+* link do strony: https://jezykowa.dziadu.dev/
 
 ## Konta testowe
 
